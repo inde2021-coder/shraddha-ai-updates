@@ -1,0 +1,123 @@
+{
+  "app": "Shraddha AI",
+  "platform": "Android only",
+  "themes_requested": [
+    "Classic",
+    "Energy",
+    "Neon",
+    "Aura"
+  ],
+  "providers_requested": [
+    "OpenAI",
+    "Gemini",
+    "Claude",
+    "Groq",
+    "Perplexity"
+  ],
+  "feature_status": [
+    [
+      "Normal AI conversation",
+      "starter foundation"
+    ],
+    [
+      "Voice input and spoken replies",
+      "starter foundation; foreground use"
+    ],
+    [
+      "Teacher mode",
+      "basic prompt foundation"
+    ],
+    [
+      "Learning for children age 3+ with parent controls",
+      "not fully implemented"
+    ],
+    [
+      "Scientific sexual-health education",
+      "provider-dependent; age-appropriate"
+    ],
+    [
+      "Medical/science maths and history",
+      "provider-dependent; verify important answers"
+    ],
+    [
+      "Fast answers",
+      "depends on provider and network"
+    ],
+    [
+      "Drawing and painting generation",
+      "not implemented; needs image-generation API"
+    ],
+    [
+      "Web search with sourced current answers",
+      "shortcut only; full retrieval not implemented"
+    ],
+    [
+      "Code/software helper",
+      "chat-based foundation"
+    ],
+    [
+      "Screenshot/screen reading",
+      "not implemented; requires user-approved screen capture"
+    ],
+    [
+      "Camera Visual Lens",
+      "single-photo foundation"
+    ],
+    [
+      "OCR/document reading",
+      "not fully implemented"
+    ],
+    [
+      "Notes/local memory",
+      "basic notes only"
+    ],
+    [
+      "File search/open/move/manage",
+      "not fully implemented"
+    ],
+    [
+      "Clipboard AI",
+      "basic shortcut"
+    ],
+    [
+      "App launcher and Android controls",
+      "partial; Android intents and permissions apply"
+    ],
+    [
+      "Calls/SMS/WhatsApp",
+      "compose/dialer shortcuts; user confirmation required"
+    ],
+    [
+      "Task automation/form filling",
+      "not fully implemented"
+    ],
+    [
+      "Media controls",
+      "not fully implemented"
+    ],
+    [
+      "Snap Vanish video-call effect",
+      "specification only; requires segmentation, particle rendering, and supported call integration"
+    ],
+    [
+      "Kitchen/recipe helper",
+      "chat-based/provider-dependent"
+    ],
+    [
+      "Orb themes and animation",
+      "full theme UI/animation not fully implemented"
+    ]
+  ],
+  "snap_vanish": {
+    "gesture": "detect finger snap in camera frames",
+    "visual": "segment the person, animate into dust particles, reverse on next snap",
+    "cross_app_limit": "ordinary Android apps cannot universally replace another app's camera feed or mute its microphone; supported call SDK/API required"
+  },
+  "remote_update_limit": "Remote config can update only values/features already supported by installed code. Native code and permission changes generally require an app update.",
+  "safety": [
+    "Android runtime permissions and user consent required",
+    "Calls/messages require confirmation",
+    "Background camera/mic restricted",
+    "Medical answers are educational, not diagnosis"
+  ]
+}

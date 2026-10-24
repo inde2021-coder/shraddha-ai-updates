@@ -1,0 +1,116 @@
+{
+  "app_name": "Shraddha AI",
+  "platform": "Android only",
+  "native_items_to_set_before_first_release": [
+    "Application ID / package name",
+    "Launcher icon and app label",
+    "Android manifest permissions and runtime permission request flows",
+    "Android minimum/target SDK and Gradle dependencies",
+    "Network security / internet access",
+    "Camera capture and image import pipeline",
+    "Microphone and speech-recognition permissions",
+    "Text-to-speech initialization and lifecycle",
+    "File picker / Storage Access Framework integration",
+    "Notification permission and foreground-service declarations if needed",
+    "Screen capture consent flow (MediaProjection) if screenshot reading is implemented",
+    "Accessibility integration only if the user explicitly enables it in Android Settings",
+    "Provider adapters and secure API-key handling",
+    "Offline/error/loading states and remote-config fallback",
+    "Privacy disclosures and consent before processing camera/audio/screen content"
+  ],
+  "native_platform_limits": [
+    "New native code, permissions, dependencies, launcher assets and SDK changes generally require a new APK/app update.",
+    "Remote config can only change settings/content/flags already implemented in the installed app.",
+    "An ordinary Android app cannot universally inject its camera feed into every other video-call app or mute/unmute those apps. Snap Vanish needs supported call SDK/effects integration.",
+    "Android restricts background camera/microphone usage and sensitive cross-app actions.",
+    "Calls and messages should use user-confirmed flows; no silent sending."
+  ],
+  "requested_features_and_status": [
+    {
+      "feature": "AI chat/provider adapters",
+      "status": "starter foundation; provider-specific support needs implementation and testing"
+    },
+    {
+      "feature": "Voice input and spoken replies",
+      "status": "starter foundation; foreground use"
+    },
+    {
+      "feature": "Teacher mode",
+      "status": "basic prompt foundation"
+    },
+    {
+      "feature": "Child learning age 3+ and parental controls",
+      "status": "not complete"
+    },
+    {
+      "feature": "Sexual-health education and medical/science maths",
+      "status": "provider-dependent; safe educational framing required"
+    },
+    {
+      "feature": "Web search with citations",
+      "status": "shortcut only; integrated retrieval not complete"
+    },
+    {
+      "feature": "Drawing/painting generation",
+      "status": "not complete; requires image-generation API"
+    },
+    {
+      "feature": "Camera visual lens",
+      "status": "single-photo foundation"
+    },
+    {
+      "feature": "Screenshot reading/OCR",
+      "status": "not complete; requires capture consent and OCR/vision pipeline"
+    },
+    {
+      "feature": "File manager",
+      "status": "not complete; Storage Access Framework/scoped storage required"
+    },
+    {
+      "feature": "Clipboard, notes, memory",
+      "status": "basic shortcuts/notes; robust memory not complete"
+    },
+    {
+      "feature": "Calls/SMS/WhatsApp",
+      "status": "compose/dialer shortcuts; user confirmation"
+    },
+    {
+      "feature": "Task automation/form filling",
+      "status": "not complete; Android integration and explicit consent required"
+    },
+    {
+      "feature": "Media controls",
+      "status": "not complete"
+    },
+    {
+      "feature": "Snap Vanish",
+      "status": "not complete; needs snap detection, subject segmentation, particle renderer, and compatible video-call integration"
+    },
+    {
+      "feature": "Orb themes Classic/Energy/Neon/Aura",
+      "status": "not complete as full animated theme system"
+    },
+    {
+      "feature": "Kitchen/code/general assistant",
+      "status": "chat-based/provider-dependent"
+    }
+  ],
+  "remote_config_policy": {
+    "remote_changeable": [
+      "welcome text",
+      "assistant persona/prompt",
+      "feature flags for already implemented modules",
+      "theme selection if UI exists",
+      "server-provided prompts/catalogues"
+    ],
+    "not_remote_changeable_without_app_update": [
+      "new native features",
+      "new permissions",
+      "manifest declarations",
+      "launcher icon/name",
+      "new SDK/dependencies",
+      "new camera or media pipeline",
+      "new accessibility/MediaProjection integration"
+    ]
+  }
+}

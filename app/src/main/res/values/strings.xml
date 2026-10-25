@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Shraddha AI</string>
+    <string name="shraddha_accessibility_description">Optional user-invoked screen reading, field entry and button control for Shraddha AI. Screen content is accessed only when the user explicitly requests an action.</string>
+</resources>

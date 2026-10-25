@@ -1,18 +1,26 @@
 {
-  "app": "Shraddha AI",
+  "app": "Shraddha AI (existing package and original icon retained)",
   "platform": "Android only",
   "themes_requested": [
     "Classic",
-    "Energy",
-    "Neon",
-    "Aura"
+    "Galaxy",
+    "Solar",
+    "Lawa",
+    "Ocean",
+    "Aurora",
+    "Glass",
+    "Plasma",
+    "Pulse",
+    "Minimal",
+    "Archer"
   ],
   "providers_requested": [
     "OpenAI",
     "Gemini",
     "Claude",
     "Groq",
-    "Perplexity"
+    "Perplexity",
+    "Compatible / OpenRouter"
   ],
   "feature_status": [
     [
@@ -57,15 +65,15 @@
     ],
     [
       "Screenshot/screen reading",
-      "not implemented; requires user-approved screen capture"
+      "Accessible UI text reading requires manually enabled Accessibility; no system screen-capture/OCR pipeline for arbitrary protected/custom-rendered screens"
     ],
     [
       "Camera Visual Lens",
-      "single-photo foundation"
+      "single photo / selected image analysis foundation; not continuous live vision"
     ],
     [
       "OCR/document reading",
-      "not fully implemented"
+      "DOCX/EPUB/RTF/TXT/MD/CSV/JSON/HTML text extraction; PDF only first 3 rendered pages; scanned-page OCR depends on provider vision"
     ],
     [
       "Notes/local memory",
@@ -105,7 +113,43 @@
     ],
     [
       "Orb themes and animation",
-      "full theme UI/animation not fully implemented"
+      "11 selectable 3D orb palettes with idle/listening/speaking state, rotating neon rings, radial glass glow; animated starfield, waveform, page transitions and user-controlled reduce-motion setting."
+    ],
+    [
+      "Permissions & Privacy dashboard",
+      "implemented; grants only after user taps; accessibility and notification listener toggled manually in Android Settings"
+    ],
+    [
+      "Feature coverage & diagnostics page",
+      "implemented; identifies available, limited and not-yet-implemented modules"
+    ],
+    [
+      "Claude and Perplexity provider adapters",
+      "source-level support added; requires valid provider API keys and model availability; not network-tested"
+    ],
+    [
+      "AI provider selector",
+      "OpenAI, Gemini, Claude, Groq, Perplexity and Compatible/OpenRouter profiles; Base URLs remain code-defined"
+    ],
+    [
+      "EPUB/DOCX/RTF reader",
+      "source-level text extraction added; archive size limited for safety; not full document pagination"
+    ],
+    [
+      "Shraddha reference visual design",
+      "Implemented in source: supplied hero artwork, animated glass orb, waveform, quick action tiles, grouped settings, shared card system and page entrance effects. Native build/render still needs Android Studio verification."
+    ],
+    [
+      "System navigation safe area",
+      "Root applies Android system bar insets after setContentView; enlarged bottom dock is laid out above gesture / three-button navigation."
+    ],
+    [
+      "Look & Feel controls",
+      "Live orb preview, orb palette selection and reduce-motion setting for orb, waveform, starfield, page and press animations."
+    ],
+    [
+      "Shraddha Profile",
+      "Assistant name and preferred language controls; voice/personality settings remain available in Voice & Language."
     ]
   ],
   "snap_vanish": {
@@ -119,5 +163,21 @@
     "Calls/messages require confirmation",
     "Background camera/mic restricted",
     "Medical answers are educational, not diagnosis"
-  ]
+  ],
+  "privacy_permissions": {
+    "default_behavior": "No runtime permission is requested automatically at app launch.",
+    "in_app_controls": [
+      "Microphone runtime permission",
+      "POST_NOTIFICATIONS runtime permission on Android 13+",
+      "Accessibility settings (manual user toggle)",
+      "Notification Access settings (manual user toggle)",
+      "General app permission settings"
+    ],
+    "no_broad_permissions": [
+      "Camera permission is not declared; capture is delegated to installed camera app",
+      "Broad storage/photo permission is not declared; Android document/photo picker grants access only to user-selected items",
+      "Direct SMS and CALL_PHONE permissions are not declared; system dialer/message/share composers are used"
+    ],
+    "data_access_notes": "Accessibility service does not collect accessibility events in background; the notification listener checks event occurrence but does not read notification title/body."
+  }
 }

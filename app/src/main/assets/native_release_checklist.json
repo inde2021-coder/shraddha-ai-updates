@@ -27,16 +27,12 @@
   ],
   "requested_features_and_status": [
     {
-      "feature": "AI chat/provider adapters",
-      "status": "starter foundation; provider-specific support needs implementation and testing"
-    },
-    {
       "feature": "Voice input and spoken replies",
       "status": "starter foundation; foreground use"
     },
     {
       "feature": "Teacher mode",
-      "status": "basic prompt foundation"
+      "status": "basic subject prompts; explanation depends on configured provider"
     },
     {
       "feature": "Child learning age 3+ and parental controls",
@@ -56,11 +52,11 @@
     },
     {
       "feature": "Camera visual lens",
-      "status": "single-photo foundation"
+      "status": "selected photo/camera-result analysis foundation; not continuous live camera analysis"
     },
     {
       "feature": "Screenshot reading/OCR",
-      "status": "not complete; requires capture consent and OCR/vision pipeline"
+      "status": "Accessible UI text reader after manually enabling Accessibility; no general MediaProjection screenshot/OCR pipeline for protected/custom-drawn screens"
     },
     {
       "feature": "File manager",
@@ -87,12 +83,24 @@
       "status": "not complete; needs snap detection, subject segmentation, particle renderer, and compatible video-call integration"
     },
     {
-      "feature": "Orb themes Classic/Energy/Neon/Aura",
-      "status": "not complete as full animated theme system"
+      "feature": "Orb themes and motion settings",
+      "status": "11 selectable 3D orb palettes, idle/listening/speaking animation, animated waveform/starfield/page transitions and reduce-motion control."
     },
     {
       "feature": "Kitchen/code/general assistant",
       "status": "chat-based/provider-dependent"
+    },
+    {
+      "feature": "Permissions & Privacy dashboard",
+      "status": "implemented; no launch-time mic prompt; permission status refreshes after Android settings; user must tap to request runtime permissions or open system settings"
+    },
+    {
+      "feature": "Feature coverage & diagnostics",
+      "status": "implemented as an in-app audit screen; explicitly lists unsupported/partial functions"
+    },
+    {
+      "feature": "AI provider adapters",
+      "status": "OpenAI-compatible connections plus Claude Messages API request/response handling; Claude, Perplexity source support added; needs API account/model verification"
     }
   ],
   "remote_config_policy": {
@@ -112,5 +120,53 @@
       "new camera or media pipeline",
       "new accessibility/MediaProjection integration"
     ]
+  },
+  "permissions_dashboard": {
+    "permission_requests_on_launch": false,
+    "runtime_permission_requests": "Only after user taps Allow in Settings > Permissions & Privacy.",
+    "special_access_flow": "A rationale confirmation is shown before opening Android Accessibility or Notification Access settings. Only the user can enable these special accesses.",
+    "feature_pages_direct_system_access": "App Control and Background Alerts route to the in-app Permissions & Privacy dashboard.",
+    "icon_assets_preserved": true
+  },
+  "document_reader": {
+    "supported_text_extraction": [
+      "PDF (first three pages via rendered page images)",
+      "DOCX (Word document body text)",
+      "EPUB (spine/chapter text extraction)",
+      "RTF",
+      "TXT",
+      "Markdown",
+      "CSV",
+      "JSON",
+      "HTML",
+      "selected images via vision provider"
+    ],
+    "limits": [
+      "Scanned PDF page OCR depends on the vision provider and image quality",
+      "Large DOCX/EPUB archives are size-limited",
+      "Full EPUB/DOCX pagination and library management are not implemented"
+    ]
+  },
+  "design_review": {
+    "reference": "User-supplied Shraddha home/settings screenshots",
+    "home_elements": [
+      "Shraddha AI wordmark",
+      "Shraddha character hero crop",
+      "interactive purple microphone orb",
+      "animated waveform",
+      "prompt composer",
+      "Chat / Create Image / Write quick actions",
+      "fixed five-slot bottom dock with Solar voice orb"
+    ],
+    "motion": [
+      "3D radial-glow orb with rotating neon ring",
+      "listening/speaking state glyphs",
+      "animated waveform",
+      "starfield",
+      "staggered page entrance",
+      "press feedback"
+    ],
+    "navigation_safety": "System bar insets applied after root attachment; dock height/touch targets slightly enlarged.",
+    "branding": "Original launcher icon and Shraddha logo artwork retained byte-for-byte."
   }
 }

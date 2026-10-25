@@ -1,0 +1,32 @@
+SHRADDHA AI — MODEL SELECTOR UPDATE
+===================================
+
+In AI Connections / provider settings, the Model name field now has a
+"Fetch / Select Available Models" button. The list is searchable, and choosing
+an item fills the Model name field. You may still type any model ID manually.
+
+Live model catalogs (requires that provider's API key and working internet):
+- OpenAI: GET https://api.openai.com/v1/models
+- Gemini: GET https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000
+  using x-goog-api-key; models that report generateContent are shown where that
+  metadata is available.
+- Claude: GET https://api.anthropic.com/v1/models?limit=1000&lifecycle=active
+  using x-api-key and anthropic-version.
+- Groq: GET https://api.groq.com/openai/v1/models
+- Compatible/OpenRouter: GET https://openrouter.ai/api/v1/models
+
+Perplexity: the public docs reviewed for this change do not document a model-list
+endpoint. The picker therefore offers common Sonar model IDs as suggestions, and
+manual model ID entry remains enabled. Provider offerings and access can change.
+
+Important: the provider endpoint may return models for different task types,
+including image/audio/embeddings. A returned model ID is not a guarantee that it
+supports this app's chat-completions request. If a model returns a compatibility
+error, choose a chat-capable model or enter another ID supported by the account.
+
+API key stays in the device's app preferences; model-list requests run over HTTPS.
+The key is not embedded in the source code or appended to model-list error messages.
+
+Validation performed: ZIP integrity and basic source scan. This environment does
+not have an Android SDK/Gradle wrapper available for a full Android build, so the
+updated Kotlin file still needs Build > Build APK(s) in Android Studio.

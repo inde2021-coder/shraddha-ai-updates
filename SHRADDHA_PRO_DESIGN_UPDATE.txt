@@ -1,0 +1,39 @@
+Shraddha-STYLE PRO DESIGN PATCH — CHANGE LOG
+=======================================
+
+1. Reference-matched Home screen
+   - Uses user-supplied Shraddha artwork cropped below the title area so the app's own wordmark stays visible.
+   - Retains the original built-in character/microphone ring in the reference crop, aligned under the custom interactive orb.
+   - Keeps the prompt box, animated waveform, Chat / Create Image / Write tiles and the Voice Studio / Visual Lens / Study & Books cards.
+
+2. Motion and depth
+   - Animated 3D-style orb has independent Idle / Listening / Speaking glyphs and state-sensitive rotation speed.
+   - Orb renders radial glow, glass-like highlights, gradient sphere and rotating neon ring.
+   - Waveform is animated continuously when its view is attached.
+   - Subtle starfield plus staggered fade/translate entrance is shared by each main page.
+   - Cards / buttons use elevated gradients, borders, ripple/haptics and press animation.
+
+3. Voice defaults and choices
+   - Fresh-install defaults: Leda, 85% speech rate and 65% volume to match the reference profile.
+   - Existing saved preferences are preserved; defaults do not forcibly overwrite existing user choices.
+   - Voice Studio includes the 12 requested names. Neural speaker names need the compatible Gemini voice API; device TTS is the fallback.
+   - Orb styles listed in Voice Studio: Classic, Galaxy, Solar, Lawa, Ocean, Aurora, Glass, Plasma, Pulse, Minimal and Archer.
+
+4. Bottom navigation safety
+   - Root insets listener reserves Android status/navigation bar space.
+   - Insets are requested after `setContentView`, so the floating dock sits above Android system navigation.
+   - Bottom dock height, icon size, label size and center voice orb were enlarged modestly while retaining five controls.
+
+5. Settings and features
+   - Settings are grouped to match the supplied reference style: Look & Feel, Chats & Memory, Phone Control, and Connections & Learning.
+   - Added dedicated Look & Feel controls with live orb preview, the 11 orb styles, and Enable 3D animations / Reduce motion setting.
+   - Added Profile settings for assistant name and preferred language.
+   - Voice & Language opens the Voice Studio/personality controls with all 12 requested named voice options, speed, volume, language, style and preview.
+   - Provider base URLs remain source-configured and hidden from Settings UI.
+   - Sensitive permissions require a user choice and Android-managed granting; Accessibility and Notification Access open only after explicit confirmation in Permissions & Privacy.
+   - Settings lists the intended available tools and clearly separates limited and not-yet-implemented features.
+
+6. Old app identity
+   - Old launcher icon and existing Shraddha logo assets are preserved byte-for-byte. The new `shraddha_home_hero.png` is only Home artwork.
+
+Build assurance: XML/JSON, zip integrity, icon hashes, and Kotlin parser-level syntax patterns are checked. Full Gradle/Android SDK compilation and actual device/emulator screenshots are not available in this environment; do not treat this as an Android Studio build verification.

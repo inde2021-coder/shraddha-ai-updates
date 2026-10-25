@@ -1,0 +1,54 @@
+SHRADDHA AI — SCREEN, PERMISSION AND FEATURE AUDIT
+==================================================
+Audit date: 2026-10-25
+
+DESIGN CONSISTENCY REVIEW
+- Home: user-supplied Shraddha artwork crop, central animated microphone orb, waveform, prompt composer, quick action tiles and bottom dock.
+- Chat / Voice: shared typography, purple accent palette, visible listening/speaking state.
+- History / Memory: common dark rounded panel styles.
+- Settings: organized reference-style groups (Look & Feel, Chats & Memory, Phone Control, Connections & Learning) link to Voice & Personality, Profile, Phone Tools, Memory, Wake & Orb, App & Task Control, Study/Books/Maps, Permissions & Privacy, and Feature Coverage.
+- Sub-pages use the shared premium panel builder, neon-purple cards, elevated pressable buttons and modal header/close/footer pattern. The provider screen remains code-endpoint based; no Base URL text field is displayed.
+- Original launcher mipmaps, adaptive launcher XML, foreground artwork and `shraddha_logo.png` were not regenerated; they were preserved as existing assets.
+
+PERMISSION FLOW REVIEW
+- No runtime permission prompt is invoked by onCreate().
+- Only central Settings > Permissions & Privacy requests RECORD_AUDIO or POST_NOTIFICATIONS, and only after an explicit user tap.
+- Accessibility and Notification Access settings are opened only through their corresponding buttons inside Permissions & Privacy. The user must manually enable each special access.
+- App Control and Background Automation permission buttons now route to Permissions & Privacy instead of opening sensitive Android settings directly.
+- Permission status refreshes when the app resumes after returning from Android settings and when the user taps Refresh status.
+- Look & Feel lets the user turn continuous motion on/off; the shared orb, waveform and starfield views refresh their motion state.
+- Original launcher and legacy Shraddha logo assets are SHA-256 compared with source assets and match byte-for-byte.
+- Notification Listener uses event occurrence only; title/body/message content is not read in its service implementation.
+- Camera and file access use Android camera/file chooser handoffs. Direct SMS and call-log permissions are not declared.
+
+FEATURE ADDITIONS IN THIS REVISION
+- Added DOCX text extraction from `word/document.xml`.
+- Added EPUB chapter text extraction using package/spine order.
+- Added bounded RTF text extraction.
+- Added DOCX, EPUB and RTF to the Android system file picker.
+- Added explicit archive expansion size limits to reduce risk from oversized/compressed archives.
+- Refreshed permission dashboard status for background wake, battery alerts and notification access.
+- Added providers (Claude and Perplexity) to the provider UI/API handling in earlier revisions; current UI has OpenAI, Gemini, Claude, Groq, Perplexity and Compatible/OpenRouter.
+
+NOTABLE FEATURES STILL LIMITED OR NOT IMPLEMENTED
+- PDF preview uses up to three pages at a time; no multi-chunk book pagination or full document library.
+- Scanned PDF OCR, general file operations, fully integrated web retrieval/citations and native image generation/editing remain incomplete.
+- Maps hand off to an external app; no internal full navigation/traffic renderer.
+- Calls/messages/bookings/orders require the system/destination app and user confirmation.
+- Automatic SIM call answering with real-time two-way cellular audio, force-stop of arbitrary apps, silent send/purchase/payment, and universal cross-app Snap Vanish are not implemented and cannot be guaranteed to normal Android apps.
+
+VALIDATION PERFORMED
+- All Android XML files were parsed.
+- JSON metadata files were parsed.
+- ZIP integrity check was run on the final package.
+- Launcher mipmap files and legacy home logo were compared byte-for-byte with source archive assets.
+- Kotlin compiler was used as a parser-only sanity check, but could not resolve Android classes because this environment has no Android SDK/android.jar or Gradle wrapper. Therefore no full compile claim is made.
+
+LATEST UPDATE - DEVELOPER CONTACTS AND AI VISION API
+===================================================
+- Settings now includes Developer Details: Sharad Patel, 8120727987, with call/dial, SMS draft, WhatsApp draft and copy-number controls.
+- Calls & Messages uses Android's contact picker to search/select a contact without broad READ_CONTACTS permission. A selected number can be used for a call, SMS draft or WhatsApp deep link.
+- Call starts the system dialer; SMS starts the installed SMS composer after an app-side preview; WhatsApp opens a prefilled chat after preview. The destination app must complete the call/send. Silent SMS and silent WhatsApp sends are not implemented.
+- Settings > AI Vision API has its own provider/model/API-key profile for OpenAI, Gemini, Claude, Groq and OpenRouter-compatible requests. Base URLs remain hard-coded in source and are not shown as editable UI fields.
+- Visual Lens reads the vision profile first and can fall back to the matching provider's saved chat key. Select a model that supports image input; a provider's model catalogue can include text-only models.
+- Settings > Feature Enable Guide now explains enablement requirements and intentionally disabled integrations. Accessibility and notification-listener classes remain unregistered in the sideload-safe manifest, so simply enabling an Android toggle cannot activate them in this build.

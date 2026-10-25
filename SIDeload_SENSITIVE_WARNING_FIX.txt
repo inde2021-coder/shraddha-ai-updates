@@ -1,0 +1,21 @@
+SHRADDHA AI — SIDeload-SAFE INSTALL BUILD
+
+Why the previous APK was blocked
+The previous AndroidManifest registered an AccessibilityService and a NotificationListenerService. Google's Play Protect developer guidance says internet-sideloaded apps that declare sensitive Accessibility or Notification Listener capability can be blocked with the message about sensitive data and financial fraud.
+Reference: https://developers.google.com/android/play-protect/warning-dev-guidance
+
+What changed in this build
+- Removed the AccessibilityService and NotificationListenerService declarations from AndroidManifest.xml.
+- Kept the Kotlin source files for reference, but Android does not register or enable these services in this APK.
+- Updated the permissions UI so it clearly says cross-app screen reading/taps/field filling and notification-triggered wake are unavailable in this sideload-safe build instead of directing the user to a permission page where the service would not appear.
+- Kept microphone voice input, AI chat and user-selected files/images, battery alerts, dialer/SMS/share-sheet handoff, and other non-sensitive functionality where existing code supports them.
+- Kept the original launcher and brand assets unchanged.
+
+Important limitations
+This is not a way to keep cross-app Accessibility/Notification Listener features and suppress the security warning. Those features are omitted from this install-safe build. To distribute a full-access version, review current Google Play policies, make the sensitive access core/transparent and obtain appropriate review/distribution. Do not disable Play Protect just to install an unreviewed build.
+
+Project version: 0.3.2-sideload-safe (versionCode 5) so this build can update the earlier version when signed with the same key.
+
+Build: open shraddha-ai-premium-branded/android in Android Studio, sync Gradle, select app debug, Build > Build APK(s). A remaining generic unknown-app scan notice may still appear for an APK not known to Play Protect.
+
+UI consistency pass: app-control screen no longer offers controls that require the removed Accessibility service; it routes users to Visual Lens with a self-selected screenshot/photo. Feature Coverage text marks cross-app control as unavailable in this safe APK.

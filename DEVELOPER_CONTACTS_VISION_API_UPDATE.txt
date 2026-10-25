@@ -1,0 +1,27 @@
+SHRADDHA AI - DEVELOPER CONTACTS, MESSAGING, AND VISION API UPDATE
+
+Developer Details
+- Developer: Sharad Patel
+- Contact number: 8120727987
+- Settings > About & Support > Developer Details opens call, SMS draft, WhatsApp draft, and copy-number actions.
+
+Contact search
+- Calls & Messages has a Search / choose from Contacts button, using Android's built-in contact picker. The app does not need broad READ_CONTACTS permission for this flow.
+- A selected contact's phone number is filled into the call/message form.
+- Call uses ACTION_DIAL and requires the user to place the call.
+- SMS opens the installed SMS app with a prefilled draft after an in-app review confirmation.
+- WhatsApp opens a prefilled wa.me chat after in-app review. The user must press Send in WhatsApp. Ordinary Android intents do not provide a public way to silently send WhatsApp messages.
+
+AI Vision API
+- Settings > AI Vision API offers OpenAI, Gemini, Claude, Groq, and Compatible/OpenRouter-compatible provider selection, a model picker/fetch-models control, and a dedicated vision API key.
+- The base URL is hard-coded in source and is not exposed in the settings UI.
+- Visual Lens uses the saved vision provider/model/key first, then can fall back to the selected provider's existing chat API key.
+- Vision-compatible models are required. Live model catalogues may include models that cannot accept images, so check provider capabilities. Official docs: OpenAI Images/Vision https://developers.openai.com/api/docs/guides/images-vision ; Gemini Image Understanding https://ai.google.dev/gemini-api/docs/image-understanding ; Claude Vision https://platform.claude.com/docs/en/build-with-claude/vision ; Groq Vision https://console.groq.com/docs/vision
+
+Disabled / limited features guidance
+- Settings > Feature Enable Guide explains which access can be enabled in-app and which features require separately registered Android components, supported official APIs, or further implementation.
+- Accessibility and notification-content listener classes are in the project but are not registered by the sideload-safe manifest; toggling a setting alone cannot activate these services. Re-enabling them needs explicit manifest registration, clear privacy disclosures, user opt-in, and distribution/security review.
+- This update does not enable silent SMS/WhatsApp delivery, arbitrary app force-stop, or automatic SIM call audio capture.
+
+Build status
+- Source was edited; ZIP/XML/manifest checks are performed after packaging. It has not been compiled or tested on a real Android device in this environment.

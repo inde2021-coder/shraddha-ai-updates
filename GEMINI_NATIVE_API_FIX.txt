@@ -1,0 +1,29 @@
+Shraddha AI — Gemini Native API Fix
+
+Why this update
+- The previous chat path used Google's OpenAI-compatible endpoint. This version routes Gemini requests through Google's native generateContent REST endpoint.
+- Gemini authentication uses the x-goog-api-key header.
+- Chat and Test AI Connection use the same native model endpoint, so the test verifies the selected model with a real generation request rather than testing a different route.
+- Visual Lens uses Gemini's native inlineData image format and reads candidates[].content.parts[].text.
+- The default chat model and Gemini vision suggestions include gemini-3.8-flash, while a saved per-provider model selection remains respected.
+- Transient socket failures still get up to two retries, without rotating API keys for a socket failure.
+
+Configuration
+- Provider: Gemini
+- Model: gemini-3.8-flash (or a text/image-capable model returned by Fetch Models)
+- API key: obtain from https://aistudio.google.com/apikey
+- Base endpoint is hard-coded and not displayed in the app UI.
+- Chat endpoint pattern: https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent
+- Model list uses https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000 and x-goog-api-key.
+
+Build
+1. Open the android folder in Android Studio.
+2. Sync Gradle.
+3. Build > Clean Project, then Build > Build APK(s).
+4. Install the newly built APK; don't reuse an older APK from a previous build.
+5. In Settings > AI Connections choose Gemini, check the model is gemini-3.8-flash, confirm the key is saved and run Test AI Connection.
+6. If it still fails, copy the HTTP code/message from Test AI Connection. Never share the API key.
+
+Validation status
+- ZIP integrity, XML parsing and JSON assets validation were run.
+- Android SDK/Gradle build and real-device test were not available in this environment, so this source change is not claimed as build-verified.

@@ -1,0 +1,12 @@
+SHRADDHA BRAND NAME UPDATE
+==========================
+
+All user-visible former assistant branding in the project source and docs has been replaced with Shraddha. The app label is now "Shraddha AI". The Home hero artwork text has also been retouched to say "Shraddha" in place of the old name. Existing launcher icon resources and Shraddha logo assets are preserved.
+
+The app performs a one-time preference migration so an existing install that had the old default assistant name stored will switch to "Shraddha". Any other custom assistant name is preserved.
+
+Main source: android/app/src/main/java/com/shraddha/assistant/MainActivity.kt
+Hero artwork: android/app/src/main/res/drawable-nodpi/shraddha_home_hero.png
+App label: android/app/src/main/res/values/strings.xml and AndroidManifest.xml
+
+This is a source-project update. It has not been compiled into an APK in this environment. Open android/ in Android Studio, sync Gradle, and build an APK to test on your device.
